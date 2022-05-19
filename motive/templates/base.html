@@ -17,36 +17,10 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/home" style="font-size: x-large; font-weight: bolder; justify-items: center;">MOTIVERSITY</a>            
-            <a class="nav-item nav-link" href="/home" style="font-size: larger; font-style: italic; text-align: center;">Home</a>
-            {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="/logout" style="font-size: larger; font-style: italic;">Logout</a>
-            {% else %}
-            <a class="nav-item nav-link" href= "/login"style="font-size: larger; font-style: italic; ">Login</a>
-            <a class="nav-item nav-link" href="/sign-up"style="font-size: larger; font-style: italic;">Sign Up</a>
-            {% endif %}
-            <div class="d-flex p-2 bd-highlight">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+  {% block navbar%}
+  {% include 'navbar.html'%}
+  {% endblock %}
+
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
     'error' %}
